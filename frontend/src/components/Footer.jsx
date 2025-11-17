@@ -3,7 +3,7 @@ import { ArrowUp } from "lucide-react";
 export default function Footer() {
   return (
     <footer
-      className="py-10 px-6 border-t border-gray-800 mt-20"
+      className="py-10 px-6 border-t border-gray-800 mt-0"
       style={{
         background: "radial-gradient(circle at top, #1b1b1b 0%, #0d0d0d 40%, #000 100%)"
       }}
