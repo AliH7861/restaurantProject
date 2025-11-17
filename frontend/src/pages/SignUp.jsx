@@ -81,13 +81,6 @@ export default function SignUp() {
             Create Account
           </button>
 
-          {/* Google Button */}
-          <button
-            type="button"
-            className="w-full py-3 bg-[#222] border border-gray-700 hover:bg-[#333] text-white font-medium rounded-lg transition"
-          >
-            Continue with Google
-          </button>
 
           {/* Redirect to login */}
           <p className="text-center text-gray-400 text-sm mt-3">
