@@ -82,6 +82,7 @@ export async function p_createReservation(req, res) {
   }
 }
 
+//Create User Working
 export async function p_createCustomer(req, res) {
     try {
         const pool = getPool();
@@ -91,17 +92,24 @@ export async function p_createCustomer(req, res) {
             email,
             phone,
             password,
+            confirm_password,
         } = req.body;
 
 
-        if (!full_name || !email || !phone || !password) {
+        if (!full_name || !email || !phone || !password || !confirm_password) {
             return res.status(400).json({
                 status: "error",
                 message: "Missing required fields",
             });
         }
 
-        
+        if (password !== confirm_password) {
+          return res.status(404).json({
+            status: "error",
+            message: "Passwords do not match."
+          });
+        }
+
         // 1. Check email
         const [emailRows] = await pool.query(
             "SELECT customer_id FROM Customer WHERE email = ?",
@@ -209,6 +217,7 @@ export async function p_createRestaurant(req, res) {
   }
 }
 
+//Login working
 export async function login(req, res) {
     try {
         const {email, password} = req.body; 
