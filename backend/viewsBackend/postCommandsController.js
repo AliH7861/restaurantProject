@@ -182,31 +182,39 @@ export async function p_createRestaurant(req, res) {
       name,
       location,
       email,
+      phone,
       opening_time,
-      closing_time
+      closing_time,
+      password
     } = req.body;
 
+    console.log(req.body);
+
     // Check required fields
-    if (!name || !location || !email || !opening_time || !closing_time) {
+    if (!name || !location || !email || !opening_time || !closing_time || !password || !phone) {
       return res.status(400).json({
         status: "error",
         message: "Missing required fields",
       });
     }
 
+    const password_hash = await bcrypt.hash(password, 10);
+
     // Insert new restaurant
     const [result] = await pool.query(
       `
       INSERT INTO Restaurant 
-        (name, location, email, opening_time, closing_time)
-      VALUES (?, ?, ?, ?, ?)
+        (name, location, email, opening_time, closing_time, password_hash, phone)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
       `,
       [
         name,
         location,
         email,
         opening_time,
-        closing_time
+        closing_time,
+        password_hash,
+        phone
       ]
     );
 
