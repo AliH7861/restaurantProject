@@ -5,7 +5,7 @@
     "main": "backend/server.js",
     "scripts": {
         "dev": "node --watch server.js",
-        "start": "node server.js",
+        "start": "npx nodemon server.js",
         "health": "node -e \"fetch('http://localhost:'+(process.env.PORT||3000)+'/health').then(r=>r.text()).then(console.log).catch(console.error)\""
     },
     "dependencies": {
@@ -16,6 +16,7 @@
         "express": "^4.21.2",
         "jsonwebtoken": "^9.0.2",
         "mysql2": "^3.15.3",
-        "node-fetch": "^3.3.2"
+        "node-fetch": "^3.3.2",
+        "nodemon": "^3.1.11"
     }
 }
