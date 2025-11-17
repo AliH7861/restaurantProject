@@ -19,7 +19,13 @@
     "url": "https://github.com/AliH7861/restaurantProject/issues"
   },
   "homepage": "https://github.com/AliH7861/restaurantProject#readme",
-  "dependencies": {
+  "devDependencies": {
     "concurrently": "^9.2.1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "expres": "^0.0.5",
+    "express": "^5.1.0"
   }
 }
