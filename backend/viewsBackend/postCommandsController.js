@@ -112,8 +112,15 @@ export async function p_createCustomer(req, res) {
 
         // 1. Check email
         const [emailRows] = await pool.query(
-            "SELECT customer_id FROM Customer WHERE email = ?",
-            [email]
+            `
+            SELECT customer_id FROM Customer WHERE email = ?
+            UNION
+            SELECT restaurant_id FROM Restaurant WHERE email = ?
+            `,
+            [
+              email,
+              email
+            ]
         );
 
         // 2. Check phone number
