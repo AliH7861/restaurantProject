@@ -1,7 +1,15 @@
 export default function SignUp() {
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-4">
-      <div className="w-full max-w-md bg-[#111] border border-gray-800 rounded-2xl p-8 shadow-xl">
+    <div className="min-h-screen 
+                    flex items-center justify-center px-4
+                    bg-gradient-to-b from-[#0a0a0a] via-[#1a1410] to-[#0a0a0a]">
+
+      <div className="w-full max-w-md 
+                      bg-[#181310]/60 
+                      border border-[#2c251f] 
+                      rounded-2xl p-8 
+                      shadow-[0_0_25px_rgba(198,166,103,0.08)]
+                      backdrop-blur-sm">
 
         {/* Header */}
         <div className="text-center mb-6">
@@ -21,7 +29,12 @@ export default function SignUp() {
             <input
               type="text"
               placeholder="John Doe"
-              className="w-full px-4 py-2 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#C6A667]"
+              className="w-full px-4 py-2 
+                         bg-[#0f0c0a] 
+                         border border-[#3a2f29] 
+                         rounded-lg 
+                         text-white placeholder-gray-500
+                         focus:outline-none focus:border-[#C6A667]"
               required
             />
           </div>
@@ -34,7 +47,12 @@ export default function SignUp() {
             <input
               type="email"
               placeholder="you@example.com"
-              className="w-full px-4 py-2 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#C6A667]"
+              className="w-full px-4 py-2 
+                         bg-[#0f0c0a] 
+                         border border-[#3a2f29] 
+                         rounded-lg 
+                         text-white placeholder-gray-500
+                         focus:outline-none focus:border-[#C6A667]"
               required
             />
           </div>
@@ -47,7 +65,12 @@ export default function SignUp() {
             <input
               type="password"
               placeholder="********"
-              className="w-full px-4 py-2 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#C6A667]"
+              className="w-full px-4 py-2 
+                         bg-[#0f0c0a] 
+                         border border-[#3a2f29] 
+                         rounded-lg 
+                         text-white placeholder-gray-500
+                         focus:outline-none focus:border-[#C6A667]"
               required
             />
           </div>
@@ -58,16 +81,21 @@ export default function SignUp() {
               Account Type
             </label>
             <select
-              className="w-full px-4 py-2 bg-black border border-gray-700 rounded-lg text-white focus:outline-none focus:border-[#C6A667]"
+              className="w-full px-4 py-2 
+                         bg-[#0f0c0a] 
+                         border border-[#3a2f29] 
+                         rounded-lg 
+                         text-white 
+                         focus:outline-none focus:border-[#C6A667]"
               required
             >
-              <option value="" disabled selected className="bg-black">
+              <option value="" disabled selected className="bg-[#0f0c0a]">
                 Select your role
               </option>
-              <option value="customer" className="bg-black">
+              <option value="customer" className="bg-[#0f0c0a]">
                 Customer
               </option>
-              <option value="manager" className="bg-black">
+              <option value="manager" className="bg-[#0f0c0a]">
                 Restaurant Manager
               </option>
             </select>
@@ -76,11 +104,15 @@ export default function SignUp() {
           {/* Signup Button */}
           <button
             type="submit"
-            className="w-full py-3 bg-[#C6A667] hover:bg-[#B49052] text-black font-semibold rounded-lg transition shadow-md"
+            className="w-full py-3 
+                       bg-[#C6A667] 
+                       hover:bg-[#b58a4f] 
+                       text-black font-semibold 
+                       rounded-lg transition 
+                       shadow-[0_0_10px_rgba(198,166,103,0.25)]"
           >
             Create Account
           </button>
-
 
           {/* Redirect to login */}
           <p className="text-center text-gray-400 text-sm mt-3">
@@ -89,8 +121,10 @@ export default function SignUp() {
               Log In
             </a>
           </p>
+
         </form>
       </div>
     </div>
   );
 }
+
