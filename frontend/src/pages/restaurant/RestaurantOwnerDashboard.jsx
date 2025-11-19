@@ -1,7 +1,8 @@
 import RestaurantNavbar from "./components/RestaurantNavbar";
 import RestaurantStats from "./components/RestaurantStats";
-import RestaurantTable from "./components/RestaurantTable";
-import RestaurantMenuManager from "./components/RestaurantMenuManager"; // <-- CRUD MENU
+import RestaurantTableManager from "./components/RestaurantTableManager";
+import RestaurantMenuManager from "./components/RestaurantMenuManager";
+import RestaurantRevManager from "./components/RestaurantRevManager";  // NEW
 
 export default function RestaurantOwnerDashboard() {
   return (
@@ -49,16 +50,32 @@ export default function RestaurantOwnerDashboard() {
           <div className="bg-[#181310] p-8 rounded-xl border border-[#2c251f]
                           shadow-sm hover:border-[#C6A667] transition-all duration-300">
 
-            <RestaurantTable />
+            <RestaurantTableManager />
           </div>
         </section>
+
+        <div className="mt-12 h-[1px] w-full bg-[#2c251f]/40"></div>
+
+        {/* Reservation Management */}
+        <section className="mt-12 pb-10">
+          <h2 className="text-3xl font-semibold mb-4">Reservation Orders</h2>
+          <p className="text-gray-400 mb-6">
+            View and access all reservation requests for your restaurant.
+          </p>
+
+          <div className="bg-[#181310] p-8 rounded-xl border border-[#2c251f]
+                          shadow-sm hover:border-[#C6A667] transition-all duration-300">
+
+            <RestaurantRevManager />  
+          </div>
+        </section>
+
       </div>
 
       {/* Footer */}
       <footer className="py-10 text-center text-gray-500 text-sm border-t border-gray-800">
         © {new Date().getFullYear()} PremiumDine — Restaurant Dashboard
       </footer>
-
     </div>
   );
 }

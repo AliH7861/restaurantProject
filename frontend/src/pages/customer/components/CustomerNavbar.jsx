@@ -13,22 +13,7 @@ export default function CustomerNavbar() {
         </h1>
       </div>
 
-      {/* Center Links */}
-      <div className="hidden md:flex items-center gap-10 text-sm">
-        <a href="#" className="text-gray-300 hover:text-[#C6A667] transition">
-          Restaurants
-        </a>
-        <a href="#" className="text-gray-300 hover:text-[#C6A667] transition">
-          Cuisines
-        </a>
-        <a href="#" className="text-gray-300 hover:text-[#C6A667] transition">
-          Profile
-        </a>
-        <a href="#" className="text-gray-300 hover:text-[#C6A667] transition">
-          Contact
-        </a>
-      </div>
-
+      
       {/* Logout Button */}
       <div>
         <button className="text-gray-300 hover:text-[#C6A667] text-sm transition">
