@@ -12,36 +12,54 @@ export default function Login() {
   const [success, setSuccess] = useState("");
 
   async function handleLogin(e) {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-    setSuccess("");
+  e.preventDefault();
+  setLoading(true);
+  setError("");
+  setSuccess("");
 
-    try {
-      const res = await fetch("http://localhost:3000/post/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+  try {
+    const res = await fetch("http://localhost:3000/post/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ email, password }),
+    });
 
-      const data = await res.json();
+    const data = await res.json();
 
-      if (!res.ok) {
-        setError(data.message || "Invalid login");
-        setLoading(false);
-        return;
-      }
-
-      setSuccess("Login successful!");
-      console.log("Success")
-      setTimeout(() => navigate("/"), 500);
+    if (!res.ok || data.status !== "success") {
+      setError(data.message || "Invalid login");
       setLoading(false);
-    } catch (err) {
-      console.error(err);
-      setError("Something went wrong. Try again.");
-      setLoading(false);
+      return;
     }
+
+    const sessionRes = await fetch("http://localhost:3000/dashboard", {
+      credentials: "include",
+    });
+
+    if (!sessionRes.ok) {
+      setError("Could not load dashboard");
+      setLoading(false);
+      return;
+    }
+
+    const session = await sessionRes.json();
+
+    if (session.account_type === "restaurant") {
+      navigate("/dashboard/restaurant");
+    } else if (session.account_type === "customer") {
+      navigate("/dashboard/customer");
+    } else {
+      navigate("/");
+    }
+
+    setLoading(false);
+  } catch (err) {
+    console.error(err);
+    setError("Something went wrong. Try again.");
+    setLoading(false);
   }
+}
 
 
   return (

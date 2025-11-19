@@ -25,7 +25,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "..", "frontend")));
 app.use('/api/reservations', reservationRoutes);
 app.use(cors({
-  origin: "http://localhost:5173",  // allow your Vite dev server
+  origin: "http://localhost:5173",   // your React frontend
+  credentials: true                  // allow cookies
 }));
 
 //Session
@@ -47,7 +48,7 @@ app.use('/post', postCommandRoutes);
 //Extra Functions
 app.use('extra', extraFunctionsRoutes);
 
-app.get("/dashboard/:account_type", (req, res) => {
+app.get("/dashboard", (req, res) => {
   console.log(req.session.email);
   console.log(req.session.account_type);
 
@@ -55,15 +56,11 @@ app.get("/dashboard/:account_type", (req, res) => {
     return res.status(401).send("Not logged in");
   }
 
-  if (req.session.account_type === "restaurant") {
-    return res.send("Restaurant Dashboard");
-  }
-
-  if (req.session.account_type === "customer") {
-    return res.send("Customer Dashboard");
-  }
-
-  return res.send("Generic Dashboard");
+  return res.json({
+    loggedIn: true,
+    email: req.session.email,
+    account_type: req.session.account_type
+  });
 });
 
 
