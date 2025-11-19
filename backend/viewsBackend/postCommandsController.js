@@ -252,41 +252,50 @@ export async function login(req, res) {
     let passwordHashField = null;
     let idField = null;
 
-    if (customerRows.length > 0) {
-      // Email belongs to a customer
-      user = customerRows[0];
-      accountType = "customer";
-      passwordHashField = "password_hash";  // column name in Customer
-      idField = "customer_id";
-    } else {
-      // 2. If not in Customer, check Restaurant
-      const [restaurantRows] = await pool.query(
-        `SELECT restaurant_id, email, password_hash
-         FROM Restaurant
-         WHERE email = ?`,
-        [email]
-      );
+    const [adminRows] = await pool.query(
+      `SELECT admin_id, email, password_hash
+      FROM Administrator
+      WHERE email = ?`,
+      [email]
+    );
 
-      if (restaurantRows.length > 0) {
-        user = restaurantRows[0];
-        accountType = "restaurant";
-        passwordHashField = "password_hash"; // change to "password" if your column is named that
-        idField = "restaurant_id";
+      if (adminRows.length > 0) {
+        user = adminRows[0];
+        accountType = "admin";
+        passwordHashField = "password_hash";
+        idField = "admin_id";
+
       } else {
-          const [adminRows] = await pool.query(
-          `SELECT admin_id, email, password_hash
-          FROM Administrator
+        // 2. Check Restaurant next
+        const [restaurantRows] = await pool.query(
+          `SELECT restaurant_id, email, password_hash
+          FROM Restaurant
           WHERE email = ?`,
           [email]
         );
 
-        if (adminRows.length > 0) {
-          user = adminRows[0];
-          accountType = "admin";
-          passwordHashField = "password_hash"; // change to "password" if your column is named that
-          idField = "admin_id";
+        if (restaurantRows.length > 0) {
+          user = restaurantRows[0];
+          accountType = "restaurant";
+          passwordHashField = "password_hash"; 
+          idField = "restaurant_id";
+
+        } else {
+          // 3. Finally check Customer
+          const [customerRows] = await pool.query(
+            `SELECT customer_id, email, password_hash
+            FROM Customer
+            WHERE email = ?`,
+            [email]
+          );
+
+          if (customerRows.length > 0) {
+            user = customerRows[0];
+            accountType = "customer";
+            passwordHashField = "password_hash";
+            idField = "customer_id";
+          }
         }
-      }
     }
     // 3. If not found in any table
     if (!user) {

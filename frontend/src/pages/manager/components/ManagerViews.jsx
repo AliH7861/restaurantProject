@@ -1,33 +1,41 @@
+import { AllReservations, OverAverage, MaxReservations, AveragePartySize, ReservationsPerDay, FrequentCustomers, AvailableTablesSummary, LateRestaurants, FullReservationDetails, AllContactEmails } from '../../viewsFunctions/ViewsFunctions';
+import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+
 export default function ManagerViews() {
+  const [activeView, setActiveView] = useState(null);
+
   const views = [
-    "Average Party Size",
-    "Reservations per Day",
-    "Late Night Restaurants",
-    "Cuisine Breakdown",
-    "Customer Visit Frequency",
-    "Peak Reservation Times",
-    "Popular Cities",
-    "Restaurant Rating Summary",
-    "Most Booked Restaurants",
-    "Customer Reservation History"
+    { name: "All Reservations", component: <AllReservations /> },
+    { name: "Over Average", component: <OverAverage /> },
+    { name: "Max Reservations", component: <MaxReservations /> },
+    { name: "Average Party Size", component: <AveragePartySize />},
+    { name: "Today's Reservations", component: <ReservationsPerDay /> },
+    { name: "Frequent Customers", component: <FrequentCustomers /> },
+    { name: "Available Tables", component: <AvailableTablesSummary /> },
+    { name: "Late Restaurants", component: <LateRestaurants />},
+    { name: "Full Reservation Details", component: <FullReservationDetails /> },
+    { name: "All Emails", component: <AllContactEmails /> },
   ];
 
   return (
-    <div className="bg-[#181310] p-6 rounded-xl border border-[#2c251f] shadow-sm">
-      <h2 className="text-xl font-semibold mb-6 text-white">Restaurant Insights</h2>
+    <div>
+      <h2>Restaurant Insights</h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {views.map((v, i) => (
+      <div className="grid grid-cols-3 gap-5">
+        {views.map((v, index) => (
           <div
-            key={i}
-            className="p-4 rounded-lg bg-[#1b1411] border border-[#2c251f]
-                       hover:border-[#C6A667] hover:bg-[#221a15]
-                       hover:shadow-[0_0_12px_rgba(198,166,103,0.15)]
-                       text-gray-200 cursor-pointer transition"
+            key={index}
+            onClick={() => setActiveView(v.name)}
+            className="p-4 cursor-pointer"
           >
-            {v}
+            {v.name}
           </div>
         ))}
+      </div>
+
+      <div className="mt-6">
+        {views.find((v) => v.name === activeView)?.component}
       </div>
     </div>
   );
