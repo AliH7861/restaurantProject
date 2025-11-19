@@ -14,6 +14,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { getAllReservations } from "./controllers/reservationController.js";
 import viewsRoutes from "./viewsBackend/viewsRoutes.js";
+import session from "express-session";
+
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -26,10 +28,15 @@ app.use(cors({
   origin: "http://localhost:5173",  // allow your Vite dev server
 }));
 
+//Session
+app.use(session({
+  secret: process.env.SESSION_SECRET,  // change this
+  resave: false,
+  saveUninitialized: true,
+}));
+
 // Register your auth routes
 app.use("/api/auth", authRoutes);
-
-
 
 //Common Views
 app.use('/views', viewsRoutes);
@@ -40,8 +47,24 @@ app.use('/post', postCommandRoutes);
 //Extra Functions
 app.use('extra', extraFunctionsRoutes);
 
+app.get("/dashboard", (req, res) => {
+  console.log(req.session.email);
+  console.log(req.session.account_type);
 
+  if (!req.session.email) {
+    return res.status(401).send("Not logged in");
+  }
 
+  if (req.session.account_type === "restaurant") {
+    return res.send("Restaurant Dashboard");
+  }
+
+  if (req.session.account_type === "customer") {
+    return res.send("Customer Dashboard");
+  }
+
+  return res.send("Generic Dashboard");
+});
 
 
 

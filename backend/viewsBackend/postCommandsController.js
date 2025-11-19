@@ -234,40 +234,77 @@ export async function p_createRestaurant(req, res) {
 
 //Login working
 export async function login(req, res) {
-    try {
-        const {email, password} = req.body; 
+  try {
+    const { email, password } = req.body;
 
-        const pool = getPool();
+    const pool = getPool();
 
-        const [rows] = await pool.query(
-            `SELECT customer_id, password_hash FROM Customer WHERE email=?`, 
-            [
-                email,
-            ]
-        );
+    // 1. Check Customer table
+    const [customerRows] = await pool.query(
+      `SELECT customer_id, email, password_hash
+       FROM Customer
+       WHERE email = ?`,
+      [email]
+    );
 
-        if (rows.length === 0) {
-            return res.status(404).json({
-                status: "error",
-                message: "No account found with this email",
-            });
-        };
+    let user = null;
+    let accountType = null;
+    let passwordHashField = null;
+    let idField = null;
 
-        const user = rows[0];
+    if (customerRows.length > 0) {
+      // Email belongs to a customer
+      user = customerRows[0];
+      accountType = "customer";
+      passwordHashField = "password_hash";  // column name in Customer
+      idField = "customer_id";
+    } else {
+      // 2. If not in Customer, check Restaurant
+      const [restaurantRows] = await pool.query(
+        `SELECT restaurant_id, email, password_hash
+         FROM Restaurant
+         WHERE email = ?`,
+        [email]
+      );
 
-        const validPassword = await bcrypt.compare(password, user.password_hash);
+      if (restaurantRows.length > 0) {
+        user = restaurantRows[0];
+        accountType = "restaurant";
+        passwordHashField = "password_hash"; // change to "password" if your column is named that
+        idField = "restaurant_id";
+      }
+    }
 
-        if (!validPassword) {
-            return res.status(401).json({
-                status: "error",
-                message: "Incorrect password",
-            });
-        };
+    // 3. If not found in either table
+    if (!user) {
+      return res.status(404).json({
+        status: "error",
+        message: "No account found with this email",
+      });
+    }
 
-        return res.json({
-            status: "success",
-            customer_id: user.customer_id,
-        });
+    // 4. Check password
+    const validPassword = await bcrypt.compare(password, user[passwordHashField]);
+
+    if (!validPassword) {
+      return res.status(401).json({
+        status: "error",
+        message: "Incorrect password",
+      });
+    }
+
+    // 5. Set session values
+    req.session.email = user.email;
+    req.session.account_type = accountType;
+    console.log("accountType variable:", accountType);
+    console.log("session account_type:", req.session.account_type);
+    console.log("user object:", user);
+    // 6. Success
+    return res.json({
+      status: "success",
+      type: accountType,
+      id: user[idField],
+    });
         
     } catch (err) {
         console.log(err);
