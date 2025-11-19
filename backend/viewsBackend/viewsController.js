@@ -6,11 +6,51 @@ export async function views_all_reservations(req, res) {
   try {
     const pool = getPool();
 
-    const [rows] = await pool.query(
-      `
-      SELECT * FROM views_all_reservations;
-      `
-    )
+    const {
+        search = "",    // stores search for cust name or rest name
+        date,           // uses reservation_date to filter by date
+    } = req.query;
+
+    // Base SQL Query, added sql depends on search & date
+    let sql = `
+        SELECT * FROM views_all_reservations
+        WHERE 1 = 1  
+    ` // WHere 1 = 1 is only to so that we can always use AND to add sql
+
+    // to hold the inputs into added sql
+    const inputParams = [];
+
+    // Queries for customer name or restaurant name
+    if (search) {
+        sql += `
+            AND (
+                customer_name LIKE ?
+                OR restaurant_name LIKE ?
+            )
+        `;
+
+        // sues pattern so that it matches more stuff
+        const pattern = `%${search}%`;
+
+        // ex. if search is coffee, itll search coffee in customer name and restaurant name
+        inputParams.push(pattern, pattern);
+    }
+
+    // filter by date
+    if (date) {
+        sql += `
+            AND (
+                r.reservation_date = ?
+            )
+        `;
+
+        inputParams.push(date);
+    }
+
+    // injects inputParams into the sql query we made above
+    const [rows] = await pool.query(sql, inputParams);
+
+    // return response as json object
     return res.json(rows);
   }
   catch (err) {

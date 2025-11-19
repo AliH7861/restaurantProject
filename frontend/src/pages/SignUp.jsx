@@ -36,8 +36,16 @@ export default function SignUp() {
   }
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-4">
-      <div className="w-full max-w-md bg-[#111] border border-gray-800 rounded-2xl p-8 shadow-xl">
+    <div className="min-h-screen 
+                    flex items-center justify-center px-4
+                    bg-gradient-to-b from-[#0a0a0a] via-[#1a1410] to-[#0a0a0a]">
+
+      <div className="w-full max-w-md 
+                      bg-[#181310]/60 
+                      border border-[#2c251f] 
+                      rounded-2xl p-8 
+                      shadow-[0_0_25px_rgba(198,166,103,0.08)]
+                      backdrop-blur-sm">
 
         {/* Header */}
         <div className="text-center mb-6">
@@ -58,7 +66,12 @@ export default function SignUp() {
               type="text"
               name="full_name"
               placeholder="John Doe"
-              className="w-full px-4 py-2 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#C6A667]"
+              className="w-full px-4 py-2 
+                         bg-[#0f0c0a] 
+                         border border-[#3a2f29] 
+                         rounded-lg 
+                         text-white placeholder-gray-500
+                         focus:outline-none focus:border-[#C6A667]"
               required
               value={form.full_name}
               onChange={handleChange}
@@ -74,7 +87,12 @@ export default function SignUp() {
               type="email"
               name="email"
               placeholder="you@example.com"
-              className="w-full px-4 py-2 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#C6A667]"
+              className="w-full px-4 py-2 
+                         bg-[#0f0c0a] 
+                         border border-[#3a2f29] 
+                         rounded-lg 
+                         text-white placeholder-gray-500
+                         focus:outline-none focus:border-[#C6A667]"
               required
               value={form.email}
               onChange={handleChange}
@@ -106,7 +124,12 @@ export default function SignUp() {
               type="password"
               name="password"
               placeholder="********"
-              className="w-full px-4 py-2 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#C6A667]"
+              className="w-full px-4 py-2 
+                         bg-[#0f0c0a] 
+                         border border-[#3a2f29] 
+                         rounded-lg 
+                         text-white placeholder-gray-500
+                         focus:outline-none focus:border-[#C6A667]"
               required
               value={form.password}
               onChange={handleChange}
@@ -118,6 +141,7 @@ export default function SignUp() {
             <label className="text-gray-300 block mb-1 text-sm font-medium">
               Confirm Password
             </label>
+<<<<<<< HEAD
             <input
               type="password"
               name="confirm_password"
@@ -127,16 +151,43 @@ export default function SignUp() {
               value={form.confirm_password}
               onChange={handleChange}
             />
+=======
+            <select
+              className="w-full px-4 py-2 
+                         bg-[#0f0c0a] 
+                         border border-[#3a2f29] 
+                         rounded-lg 
+                         text-white 
+                         focus:outline-none focus:border-[#C6A667]"
+              required
+            >
+              <option value="" disabled selected className="bg-[#0f0c0a]">
+                Select your role
+              </option>
+              <option value="customer" className="bg-[#0f0c0a]">
+                Customer
+              </option>
+              <option value="manager" className="bg-[#0f0c0a]">
+                Restaurant Manager
+              </option>
+            </select>
+>>>>>>> e6911d9a720814f2d4c9cb9463e017da0f7f1096
           </div>
 
           {/* Signup Button */}
           <button
             type="submit"
-            className="w-full py-3 bg-[#C6A667] hover:bg-[#B49052] text-black font-semibold rounded-lg transition shadow-md"
+            className="w-full py-3 
+                       bg-[#C6A667] 
+                       hover:bg-[#b58a4f] 
+                       text-black font-semibold 
+                       rounded-lg transition 
+                       shadow-[0_0_10px_rgba(198,166,103,0.25)]"
           >
             Create Account
           </button>
 
+<<<<<<< HEAD
           {/* Google Button
           <button
             type="button"
@@ -145,6 +196,8 @@ export default function SignUp() {
             Continue with Google
           </button> */}
 
+=======
+>>>>>>> e6911d9a720814f2d4c9cb9463e017da0f7f1096
           {/* Redirect to login */}
           <p className="text-center text-gray-400 text-sm mt-3">
             Already have an account?{" "}
@@ -152,8 +205,10 @@ export default function SignUp() {
               Log In
             </a>
           </p>
+
         </form>
       </div>
     </div>
   );
 }
+

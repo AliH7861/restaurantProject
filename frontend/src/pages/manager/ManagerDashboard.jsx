@@ -1,44 +1,49 @@
+import ManagerNavbar from "./components/ManagerNavbar";
+import ManagerStats from "./components/ManagerStats";
+import RestaurantCardsSection from "./components/RestaurantCardsSection";
+import ManagerViews from "./components/ManagerViews";
+import ReservationOverview from "./components/ReservationOverview";
+import ManagerFooter from "./components/ManagerFooter";
+
 export default function ManagerDashboard() {
   return (
-    <div className="min-h-screen bg-black text-white px-8 py-10">
-      <h1 className="text-4xl font-semibold mb-4">Manager Dashboard</h1>
+    <div className="min-h-screen text-white 
+                    bg-gradient-to-b from-[#0a0a0a] via-[#1a1410] to-[#0a0a0a]">
 
-      <p className="text-gray-300">
-        Welcome to your management panel. Here you can oversee restaurant operations, 
-        manage reservations, and monitor performance analytics.
-      </p>
+      {/* Navbar */}
+      <ManagerNavbar />
 
-      <div className="mt-10 grid gap-6 grid-cols-1 md:grid-cols-2">
-        
-        <div className="bg-[#111] p-6 rounded-xl border border-gray-800">
-          <h2 className="text-xl font-semibold mb-2">Today's Reservations</h2>
-          <p className="text-gray-400">
-            View all upcoming reservations for your restaurant.
-          </p>
+      <div className="px-8 py-10 max-w-6xl mx-auto">
+
+        {/* Title */}
+        <h1 className="text-4xl font-semibold mb-4">Manager Dashboard</h1>
+
+        <p className="text-gray-300 mb-10">
+          Manage restaurants, review performance stats, monitor reservations, 
+          and explore system-wide insights.
+        </p>
+
+        {/* Stats */}
+        <ManagerStats />
+
+        {/* Restaurants Section */}
+        <div className="mt-10">
+          <RestaurantCardsSection />
         </div>
 
-        <div className="bg-[#111] p-6 rounded-xl border border-gray-800">
-          <h2 className="text-xl font-semibold mb-2">Manage Reservations</h2>
-          <p className="text-gray-400">
-            Edit, update, or cancel customer bookings.
-          </p>
+        {/* Views Section */}
+        <div className="mt-12">
+          <ManagerViews />
         </div>
 
-        <div className="bg-[#111] p-6 rounded-xl border border-gray-800">
-          <h2 className="text-xl font-semibold mb-2">Table Status</h2>
-          <p className="text-gray-400">
-            Check available tables and table assignment status.
-          </p>
+        {/* Reservation Overview */}
+        <div className="mt-12">
+          <ReservationOverview />
         </div>
-
-        <div className="bg-[#111] p-6 rounded-xl border border-gray-800">
-          <h2 className="text-xl font-semibold mb-2">Analytics & Reports</h2>
-          <p className="text-gray-400">
-            View charts, insights, and performance metrics.
-          </p>
-        </div>
-
       </div>
+
+      {/* Footer */}
+      <ManagerFooter />
     </div>
   );
 }

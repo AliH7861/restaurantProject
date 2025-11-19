@@ -1,33 +1,42 @@
+import CustomerNavbar from "./components/CustomerNavbar";
+import CuisineSearch from "./components/CuisineSearch";
+import DashboardStats from "./components/DashboardStats";
+import FavoritesList from "./components/FavoritesList"; 
+import ReservationsList from "./components/ReservationsList";
+
 export default function CustomerDashboard() {
   return (
-    <div className="min-h-screen bg-black text-white px-8 py-10">
-      <h1 className="text-4xl font-semibold mb-4">Customer Dashboard</h1>
+    <div className="min-h-screen text-white 
+                    bg-gradient-to-b from-[#0a0a0a] via-[#1a1410] to-[#0a0a0a]">
+      {/* Navbar */}
+      <CustomerNavbar />
 
-      <p className="text-gray-300">
-        Welcome to your dashboard. Here you can browse restaurants, book tables, 
-        check your reservations, and explore your dining history.
-      </p>
+      <div className="px-8 py-10 max-w-6xl mx-auto">
+        {/* Title */}
+        <h1 className="text-4xl font-semibold mb-4">Customer Dashboard</h1>
 
-      {/* Add more sections later */}
-      <div className="mt-10 grid gap-6 grid-cols-1 md:grid-cols-2">
-        <div className="bg-[#111] p-6 rounded-xl border border-gray-800">
-          <h2 className="text-xl font-semibold mb-2">Browse Restaurants</h2>
-          <p className="text-gray-400">Explore restaurants and cuisines.</p>
+        <p className="text-gray-300 mb-10">
+          Welcome to your dashboard. Browse restaurants, manage reservations, 
+          discover cuisines, and explore your dining history.
+        </p>
+
+        {/* Stats Section */}
+        <DashboardStats />
+
+        {/* Search + Favorites Section */}
+        <div className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Cuisine Search (Large) */}
+          <div className="lg:col-span-2">
+            <CuisineSearch />
+          </div>
+
+          {/* Favorites */}
+          <FavoritesList />
         </div>
 
-        <div className="bg-[#111] p-6 rounded-xl border border-gray-800">
-          <h2 className="text-xl font-semibold mb-2">Book a Table</h2>
-          <p className="text-gray-400">Quickly reserve a table.</p>
-        </div>
-
-        <div className="bg-[#111] p-6 rounded-xl border border-gray-800">
-          <h2 className="text-xl font-semibold mb-2">Your Reservations</h2>
-          <p className="text-gray-400">View and manage your booking history.</p>
-        </div>
-
-        <div className="bg-[#111] p-6 rounded-xl border border-gray-800">
-          <h2 className="text-xl font-semibold mb-2">Edit Profile</h2>
-          <p className="text-gray-400">Update your information.</p>
+        {/* Reservations Section */}
+        <div className="mt-10">
+          <ReservationsList />
         </div>
       </div>
     </div>
