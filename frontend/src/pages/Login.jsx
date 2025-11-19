@@ -65,13 +65,8 @@ export default function Login() {
         </div>
 
         {/* Form */}
-<<<<<<< HEAD
-        <form onSubmit={handleLogin} className="space-y-5">
+        <form onSubmit={handleLogin} className="space-y-6">
           
-=======
-        <form className="space-y-6">
-
->>>>>>> e6911d9a720814f2d4c9cb9463e017da0f7f1096
           {/* Email */}
           <div>
             <label className="text-gray-300 block mb-2 text-sm font-medium">
@@ -116,36 +111,18 @@ export default function Login() {
           {/* Login Button */}
           <button
             type="submit"
-<<<<<<< HEAD
-            className="w-full py-3 bg-[#C6A667] hover:bg-[#B49052] text-black font-semibold rounded-lg transition shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
-            disabled={loading}
-=======
             className="w-full py-3 
                        bg-[#C6A667] 
                        hover:bg-[#b38a4f] 
                        text-black font-semibold rounded-lg 
                        transition duration-200 
                        shadow-[0_0_10px_rgba(198,166,103,0.25)]"
->>>>>>> e6911d9a720814f2d4c9cb9463e017da0f7f1096
           >
             {loading ? "Logging in..." : "Login"}
           </button>
 
-<<<<<<< HEAD
-          {/* Google Login
-          <button
-            type="button"
-            className="w-full py-3 bg-[#222] border border-gray-700 hover:bg-[#333] text-white font-medium rounded-lg transition"
-          >
-            Continue with Google
-          </button> */}
-
-          {/* Signup link */}
-          <p className="text-center text-gray-400 text-sm mt-3">
-=======
           {/* Signup Link */}
           <p className="text-center text-gray-400 text-sm pt-2">
->>>>>>> e6911d9a720814f2d4c9cb9463e017da0f7f1096
             Don't have an account?{" "}
             <a href="/signup" className="text-[#C6A667] hover:underline">
               Sign Up
