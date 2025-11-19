@@ -39,7 +39,7 @@ export default function OurServices() {
             Our Services
           </h2>
           <p className="text-gray-400 text-sm sm:text-base mt-3 max-w-2xl mx-auto">
-            Solutions crafted to give restaurants complete control — simple,
+            Solutions crafted to give restaurants complete control  simple,
             intuitive, and designed with premium detail.
           </p>
         </div>

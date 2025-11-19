@@ -13,21 +13,7 @@ export default function RestaurantNavbar() {
         </h1>
       </div>
 
-      {/* Center Links */}
-      <div className="hidden md:flex items-center gap-10 text-sm">
-        <a href="#" className="text-gray-300 hover:text-[#C6A667] transition">
-          Dashboard
-        </a>
-        <a href="#" className="text-gray-300 hover:text-[#C6A667] transition">
-          Tables
-        </a>
-        <a href="#" className="text-gray-300 hover:text-[#C6A667] transition">
-          Reservations
-        </a>
-        <a href="#" className="text-gray-300 hover:text-[#C6A667] transition">
-          Profile
-        </a>
-      </div>
+      
 
       {/* Logout */}
       <button className="text-gray-300 hover:text-[#C6A667] transition text-sm">

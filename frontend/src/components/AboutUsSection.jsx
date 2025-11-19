@@ -15,7 +15,7 @@ export default function AboutUsSection() {
           </h2>
 
           <p className="text-gray-400 text-sm sm:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
-            We built PremiumDine with one purpose — to bring a modern, elegant,
+            We built PremiumDine with one purpose  to bring a modern, elegant,
             and seamless dining experience for both customers and restaurants.
             With reliable tools, beautiful interfaces, and smart automation,
             we’re reimagining what dining management can be.

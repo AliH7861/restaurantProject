@@ -13,13 +13,7 @@ export default function ManagerNavbar() {
         </h1>
       </div>
 
-      {/* Links */}
-      <div className="hidden md:flex items-center gap-10 text-sm">
-        <a className="text-gray-300 hover:text-[#C6A667] transition">Dashboard</a>
-        <a className="text-gray-300 hover:text-[#C6A667] transition">Restaurants</a>
-        <a className="text-gray-300 hover:text-[#C6A667] transition">Insights</a>
-        <a className="text-gray-300 hover:text-[#C6A667] transition">Reservations</a>
-      </div>
+      
 
       {/* Logout */}
       <button className="text-gray-300 hover:text-[#C6A667] transition text-sm">

@@ -6,6 +6,9 @@ import NotFound from "./pages/NotFound.jsx";
 import Login from "./pages/Login.jsx";
 import SignUp from "./pages/SignUp.jsx";
 
+import TestRestaurant from "./pages/TestRestaurant";
+
+
 /* Dashboards */
 import CustomerDashboard from "./pages/customer/CustomerDashboard.jsx";
 import ManagerDashboard from "./pages/manager/ManagerDashboard.jsx";
@@ -31,6 +34,8 @@ function App() {
         <Route path="/dashboard/restaurant" element={<RestaurantOwnerDashboard />} />
         <Route path="/dashboard/manager" element={<ManagerDashboard />} />
 
+        <Route path="/test-restaurant" element={<TestRestaurant />} />
+        
         {/* Customer restaurant flow */}
         <Route path="/restaurant/:id" element={<RestaurantPage />} />
         <Route
