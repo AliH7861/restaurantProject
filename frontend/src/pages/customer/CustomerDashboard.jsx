@@ -3,6 +3,7 @@ import CuisineSearch from "./components/CuisineSearch";
 import DashboardStats from "./components/DashboardStats";
 import FavoritesList from "./components/FavoritesList"; 
 import ReservationsList from "./components/ReservationsList";
+import CreateReservation from "../../components/CreateReservation";
 
 export default function CustomerDashboard() {
   return (
@@ -33,6 +34,8 @@ export default function CustomerDashboard() {
           {/* Favorites */}
           <FavoritesList />
         </div>
+
+      <CreateReservation />
 
         {/* Reservations Section */}
         <div className="mt-10">

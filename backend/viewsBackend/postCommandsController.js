@@ -318,9 +318,8 @@ export async function login(req, res) {
     // 5. Set session values
     req.session.email = user.email;
     req.session.account_type = accountType;
-    console.log("accountType variable:", accountType);
-    console.log("session account_type:", req.session.account_type);
-    console.log("user object:", user);
+
+    console.log(user.customer_id);
     // 6. Success
     return res.json({
       status: "success",
