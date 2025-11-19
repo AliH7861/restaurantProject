@@ -272,10 +272,23 @@ export async function login(req, res) {
         accountType = "restaurant";
         passwordHashField = "password_hash"; // change to "password" if your column is named that
         idField = "restaurant_id";
+      } else {
+          const [adminRows] = await pool.query(
+          `SELECT admin_id, email, password_hash
+          FROM Administrator
+          WHERE email = ?`,
+          [email]
+        );
+
+        if (adminRows.length > 0) {
+          user = adminRows[0];
+          accountType = "admin";
+          passwordHashField = "password_hash"; // change to "password" if your column is named that
+          idField = "admin_id";
+        }
       }
     }
-
-    // 3. If not found in either table
+    // 3. If not found in any table
     if (!user) {
       return res.status(404).json({
         status: "error",

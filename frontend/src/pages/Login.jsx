@@ -49,6 +49,8 @@ export default function Login() {
       navigate("/dashboard/restaurant");
     } else if (session.account_type === "customer") {
       navigate("/dashboard/customer");
+    } else if (session.account_type === "admin") {
+      navigate("/dashboard/admin");
     } else {
       navigate("/");
     }

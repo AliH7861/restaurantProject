@@ -31,7 +31,7 @@ function App() {
         {/* Dashboards */}
         <Route path="/dashboard/customer" element={<CustomerDashboard />} />
         <Route path="/dashboard/restaurant" element={<RestaurantOwnerDashboard />} />
-        <Route path="/dashboard/manager" element={<ManagerDashboard />} />
+        <Route path="/dashboard/admin" element={<ManagerDashboard />} />
 
         {/* Customer restaurant flow */}
         <Route path="/restaurant/:id" element={<RestaurantPage />} />
