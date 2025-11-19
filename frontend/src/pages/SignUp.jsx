@@ -141,7 +141,6 @@ export default function SignUp() {
             <label className="text-gray-300 block mb-1 text-sm font-medium">
               Confirm Password
             </label>
-<<<<<<< HEAD
             <input
               type="password"
               name="confirm_password"
@@ -151,27 +150,6 @@ export default function SignUp() {
               value={form.confirm_password}
               onChange={handleChange}
             />
-=======
-            <select
-              className="w-full px-4 py-2 
-                         bg-[#0f0c0a] 
-                         border border-[#3a2f29] 
-                         rounded-lg 
-                         text-white 
-                         focus:outline-none focus:border-[#C6A667]"
-              required
-            >
-              <option value="" disabled selected className="bg-[#0f0c0a]">
-                Select your role
-              </option>
-              <option value="customer" className="bg-[#0f0c0a]">
-                Customer
-              </option>
-              <option value="manager" className="bg-[#0f0c0a]">
-                Restaurant Manager
-              </option>
-            </select>
->>>>>>> e6911d9a720814f2d4c9cb9463e017da0f7f1096
           </div>
 
           {/* Signup Button */}
@@ -187,17 +165,6 @@ export default function SignUp() {
             Create Account
           </button>
 
-<<<<<<< HEAD
-          {/* Google Button
-          <button
-            type="button"
-            className="w-full py-3 bg-[#222] border border-gray-700 hover:bg-[#333] text-white font-medium rounded-lg transition"
-          >
-            Continue with Google
-          </button> */}
-
-=======
->>>>>>> e6911d9a720814f2d4c9cb9463e017da0f7f1096
           {/* Redirect to login */}
           <p className="text-center text-gray-400 text-sm mt-3">
             Already have an account?{" "}
