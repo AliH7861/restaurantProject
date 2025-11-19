@@ -1,27 +1,19 @@
-import { ArrowUp } from "lucide-react";
-
 export default function Footer() {
   return (
     <footer
-      className="py-10 px-6 border-t border-gray-800 mt-0"
+      className="py-10 px-6 border-t border-[#3a2f27]"
       style={{
-        background: "radial-gradient(circle at top, #1b1b1b 0%, #0d0d0d 40%, #000 100%)"
+        background:
+          "linear-gradient(180deg, #0d0a09 0%, #120f0d 50%, #0b0908 100%)",
       }}
     >
-      <div className="max-w-6xl mx-auto flex items-center justify-between">
-
-        <p className="text-sm text-gray-400">
-          &copy; {new Date().getFullYear()} 𝕬𝕳.co — PremiumDine. All rights reserved.
-        </p>
-
-        <a
-          href="#hero"
-          className="p-3 rounded-full bg-[#111] border border-gray-700 text-[#C6A667] 
-                     hover:bg-[#1a1a1a] hover:border-[#C6A667] transition"
+      <div className="max-w-6xl mx-auto">
+        <p className="text-center text-sm tracking-wide"
+          style={{ color: "rgba(198,166,103,0.55)" }}
         >
-          <ArrowUp size={18} />
-        </a>
-
+          © {new Date().getFullYear()} 𝕬𝕳.co — PremiumDine.  
+          All rights reserved.
+        </p>
       </div>
     </footer>
   );
