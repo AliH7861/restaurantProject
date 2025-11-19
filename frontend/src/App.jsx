@@ -9,7 +9,7 @@ import RegisterRestaurant from "./pages/RegisterRestaurant.jsx";
 
 /* Dashboards */
 import CustomerDashboard from "./pages/customer/CustomerDashboard.jsx";
-import ManagerDashboard from "./pages/manager/ManagerDashboard.jsx";
+import ManagerDashboard from "./pages/manager/AdminDashboard.jsx";
 import RestaurantOwnerDashboard from "./pages/restaurant/RestaurantOwnerDashboard.jsx";
 
 /* Customer restaurant flow */

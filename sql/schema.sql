@@ -5,7 +5,8 @@ CREATE TABLE IF NOT EXISTS Restaurant (
   location VARCHAR(150),
   email VARCHAR(100),
   opening_time TIME,
-  closing_time TIME
+  closing_time TIME,
+  password_hash VARCHAR(255) NOT NULL,
 );
 
 CREATE TABLE IF NOT EXISTS Customer (

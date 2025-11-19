@@ -47,7 +47,7 @@ app.use('/post', postCommandRoutes);
 //Extra Functions
 app.use('extra', extraFunctionsRoutes);
 
-app.get("/dashboard", (req, res) => {
+app.get("/dashboard/:account_type", (req, res) => {
   console.log(req.session.email);
   console.log(req.session.account_type);
 
