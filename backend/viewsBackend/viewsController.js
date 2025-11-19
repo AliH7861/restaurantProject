@@ -40,7 +40,7 @@ export async function views_all_reservations(req, res) {
     if (date) {
         sql += `
             AND (
-                r.reservation_date = ?
+                reservation_date = ?
             )
         `;
 
